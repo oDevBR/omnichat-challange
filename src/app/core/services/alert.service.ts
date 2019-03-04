@@ -2,9 +2,7 @@ import { Injectable } from "@angular/core";
 import swal from "sweetalert2";
 
 const sweet = swal.mixin({
-    showCloseButton: true,
-    background: "#424242",
-    timer: 5000
+    showCloseButton: true
 });
 
 @Injectable({
