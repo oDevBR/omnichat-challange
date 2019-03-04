@@ -4,17 +4,18 @@ export interface Customer {
     updatedAt: string;
     name: string;
     lastName: string;
-    acceptsMarketing: string;
+    acceptsMarketing: boolean;
     email: string;
+    taxDocumentNumber: string;
     phoneAreaCode: string;
     phoneCountryCode: string;
     phoneNumber: string;
-    businessName: string;
     birthDate: string;
     businessAccount: boolean;
-    taxDocumentNumber: string;
+    businessName: any;
+    businessTaxId: any;
+    gender: any;
     address: Address[];
-    gender: string;
 }
 
 interface Address {
@@ -23,6 +24,7 @@ interface Address {
     addressLine2: string;
     number: string;
     suburb: string;
+    city: string;
     state: string;
     country: string;
     zip: string;
