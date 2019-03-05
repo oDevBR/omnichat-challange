@@ -23,9 +23,9 @@ export class AlertService {
         });
     }
 
-    swalError(message, title?: 'Oops...') {
+    swalError(message) {
         return sweet.fire({
-            title: title,
+            title: 'Oops...',
             text: message,
             type: "error"
         });

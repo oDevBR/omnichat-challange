@@ -17,7 +17,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             if (err.status === 404) {
                 this.alert.swalError(error)
             } else {
-                this.alert.swalError('Ocorreu um erro inexperado!')
+                this.alert.swalError('Ocorreu um erro inexperado, tente mais tarde!')
             }
             return throwError(error);
         }))
