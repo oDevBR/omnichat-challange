@@ -1,27 +1,24 @@
 export interface Customer {
-    objectId: string;
-    createdAt: string;
-    updatedAt: string;
+    objectId?: string;
+    createdAt?: string;
+    updatedAt?: string;
     name: string;
     lastName: string;
     acceptsMarketing: boolean;
     email: string;
-    taxDocumentNumber: string;
     phoneAreaCode: string;
     phoneCountryCode: string;
     phoneNumber: string;
     birthDate: string;
-    businessAccount: boolean;
+    businessAccount?: boolean;
     businessName: any;
-    businessTaxId: any;
-    gender: any;
-    address: Address[];
+    address: Address;
 }
 
 interface Address {
-    name: string;
+    name?: string;
     addressLine1: string;
-    addressLine2: string;
+    addressLine2?: string;
     number: string;
     suburb: string;
     city: string;
