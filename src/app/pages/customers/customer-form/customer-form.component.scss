@@ -1,0 +1,23 @@
+::ng-deep .mat-checkbox-layout .mat-checkbox-label {
+    line-height: 34px;
+}
+
+.sub-title {
+    padding: 0 10px;
+    display: flex;
+    flex: 1 1 0%;
+    .start-line {
+        flex: 1;
+        display: flex;
+        place-content: center flex-start;
+    }
+    .end-line {
+        display: flex;
+        place-content: center flex-end;
+        button {
+            &.first-of-type {
+                margin-right: 10px
+            }
+        }
+    }
+}

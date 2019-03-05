@@ -1,0 +1,27 @@
+mat-toolbar  {
+    height: 136px!important;
+    min-height: 136px!important;
+    max-height: 136px!important;
+    > div.header {
+      width: 100%;
+    }
+}
+
+  .my-pagination /deep/ {
+    .ngx-pagination {
+      padding: 0;
+      a,
+      button {
+        color: black;
+        &:hover {
+          border-radius: 4px;
+        }
+      }
+      .current {
+        border-radius: 4px;
+      }
+      .disabled {
+        color: #7d7d7d;
+      }
+    }
+  }
