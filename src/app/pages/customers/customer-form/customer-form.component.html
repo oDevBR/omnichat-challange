@@ -1,3 +1,110 @@
-<p>
-  customer-form works!
-</p>
+<form [formGroup]="detailForm" autocomplete="false">
+    <div mat-dialog-title>
+        <div *ngIf="!editMode" fxLayout="row" fxLayoutAlign="space-between">
+            <h3>{{data.name}}&nbsp;{{data.lastName}}</h3>
+            <button mat-icon-button mat-dialog-close>
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+        <div class="sub-title">
+            <mat-checkbox class="start-line" formControlName="marketing">
+                Aceita propaganda
+            </mat-checkbox>
+            <div class="end-line">
+                <ng-container *ngIf="!editMode; else elseTemplate">
+                    <!-- <button class="first-of-type" mat-stroked-button>Editar</button> -->
+                    <button mat-stroked-button color="warn" (click)="delete()">Deletar</button>
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <button class="first-of-type" mat-stroked-button color="primary" (click)="create()" [disabled]="detailForm.invalid">Salvar</button>
+                    <button mat-stroked-button mat-dialog-close color="warn">Cancelar</button>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+    <div mat-dialog-content>
+        <div fxLayout="row wrap" fxLayoutAlign="start">
+            <mat-form-field appearance="outline" autocomplete="false" fxFlex="25">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="name" value="{{data.name}}" [required]="editMode">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" autocomplete="false" fxFlex="25">
+                <mat-label>Sobrenome</mat-label>
+                <input matInput formControlName="lastName" value="{{data.lastName}}" [required]="editMode">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" autocomplete="false" fxFlex="50">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" value="{{data.email}}" [required]="editMode">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" autocomplete="false" fxFlex="15">
+                <mat-label>Código de país</mat-label>
+                <input matInput formControlName="phoneCountryCode" value="{{data.phoneCountryCode}}">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" autocomplete="false" fxFlex="15">
+                <mat-label>Código de área</mat-label>
+                <input matInput formControlName="phoneAreaCode" value="{{data.phoneAreaCode}}">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" autocomplete="false" fxFlex="20">
+                <mat-label>Telefone</mat-label>
+                <input matInput formControlName="phoneNumber" value="{{data.phoneNumber}}">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" autocomplete="false" fxFlex="25">
+                <mat-label>Empresa</mat-label>
+                <input matInput formControlName="business" value="{{data.businessName}}">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" autocomplete="false" fxFlex="25">
+                <mat-label>Nascimento</mat-label>
+                <input matInput formControlName="birthDate" [matDatepicker]="picker" value="{{data.birthDate}}" [required]="editMode">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" autocomplete="false" fxFlex="40">
+                <mat-label>Endereço</mat-label>
+                <input matInput formControlName="addressLine1" value="{{data.address.addressLine1}}">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" autocomplete="false" fxFlex="40">
+                <mat-label>Endereço 2</mat-label>
+                <input matInput formControlName="addressLine2" value="{{data.address.addressLine2}}">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" autocomplete="false" fxFlex="20">
+                <mat-label>Número</mat-label>
+                <input matInput formControlName="addressNumber" value="{{data.address.number}}">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" autocomplete="false" fxFlex="25">
+                <mat-label>Bairro</mat-label>
+                <input matInput formControlName="addressSuburb" value="{{data.address.suburb}}">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" autocomplete="false" fxFlex="25">
+                <mat-label>Cidade</mat-label>
+                <input matInput formControlName="addressCity" value="{{data.address.city}}">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" autocomplete="false" fxFlex="20">
+                <mat-label>Estado</mat-label>
+                <input matInput formControlName="addressCity" value="{{data.address.state}}">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" autocomplete="false" fxFlex="15">
+                <mat-label>País</mat-label>
+                <input matInput formControlName="phoneNumber" value="{{data.address.country}}">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" autocomplete="false" fxFlex="15">
+                <mat-label>CEP</mat-label>
+                <input matInput formControlName="addressZip" value="{{data.address.zip}}">
+            </mat-form-field>
+        </div>
+    </div>
+</form>
