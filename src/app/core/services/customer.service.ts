@@ -12,12 +12,16 @@ export class CustomerService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Customer[]> {
-    return this.http.get(`${WEB_API}/customers`)
+  getAll(page: number, limit: number): Observable<Customer[]> {
+    return this.http.get(`${WEB_API}/customers`,  {
+      params: new HttpParams()
+      .set('limit', limit.toString())
+      .set('offset', (page * 5).toString())
+    }) 
       .pipe(map(res => res as Customer[]))
   }
 
-  getById(objectId: any): Observable<Customer> {
+  getById(objectId: string): Observable<Customer> {
     return this.http.get(`${WEB_API}/customers`, {
       params: new HttpParams().set('objectId', objectId)
     })
@@ -36,11 +40,15 @@ export class CustomerService {
       .pipe(map(res => res as Customer))
   }
 
-  delete(objectId: any): Observable<any> {
-    return this.http.put(`${WEB_API}/customers`, {
+  delete(objectId: string): Observable<any> {
+    return this.http.delete(`${WEB_API}/customers`, {
       params: new HttpParams().set('objectId', objectId)
     })
       .pipe(map(res => res as Customer))
+  }
+
+  count(): Observable<any> {
+    return this.http.get(`${WEB_API}/customers/count`)
   }
 
   private handleError(error: any): Observable<any> {
